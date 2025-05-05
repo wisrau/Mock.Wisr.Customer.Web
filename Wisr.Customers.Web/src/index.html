@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website</title>
+
+    <style type="text/css">
+      #submit-button {
+        background-color: green;
+      }
+
+      .primary {
+        color: white;
+      }
+
+      button {
+        color: black;
+        background-color: red;
+      }
+
+      button.primary {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form" name="form">
+      <button type="submit" class="primary" id="submit-button">Submit</button>
+    </form>
+
+    <script type="text/javascript">
+      class FormHelper {
+        constructor(form) {
+          this.form = form;
+          this.submitButton = this.form.querySelector("[type=submit]");
+
+          this.submitButton.addEventListener("click", this.submitClick);
+          form.addEventListener("submit", this.submit);
+        }
+
+        submitClick = (e) => {
+          if (!this.form.checkValidity()) {
+            e.preventDefault();
+          }
+          console.log(this);
+        };
+
+        submit(e) {
+          const body = new FormData(e.currentTarget);
+          fetch("https://wisr.com.au/", { method: "POST", body }).then(() =>
+            alert("Success!")
+          );
+          console.log(this);
+        }
+      }
+
+      const form = document.getElementById("form");
+      const formHelper = new FormHelper(form);
+    </script>
+  </body>
+</html>
