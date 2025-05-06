@@ -8,5 +8,6 @@ export interface CustomerResponse {
 export interface CustomerResponseAccount {
     name: string;
     provider: string;
+    open: boolean;
     balance: number;
 }
