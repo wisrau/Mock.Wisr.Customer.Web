@@ -3,9 +3,11 @@ import "./app.css";
 import { getCustomer, updateCustomer } from "./api/http";
 import { parseForm } from "./form-helper";
 import { Account } from "./components/account";
+import { Modal } from "./components/modal";
 
 export const App: React.FunctionComponent = () => {
   const [error, setError] = React.useState("");
+  const [modalOpen, setModalOpen] = React.useState(true);
   getCustomer().then((customer) => console.log("Load", customer));
 
   return (

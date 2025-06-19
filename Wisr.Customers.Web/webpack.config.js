@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = {
   entry: path.resolve(__dirname, "./src/index.tsx"),
   mode: "development",
-  devServer: { port: 3000 },
+  devServer: { port: 3000, client: { overlay: false } },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".css"],
   },
